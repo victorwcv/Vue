@@ -1,40 +1,11 @@
 <template>
-  <section>
-    <h3>Counter: {{ counter }}</h3>
-    <h3>Square: {{ counterSquare }}</h3>
-
-    <div>
-      <button @click="decrement">-1</button>
-      <button @click="reset">Reset</button>
-      <button @click="increment">+1</button>
-    </div>
-  </section>
+  <h1>Hello Vue</h1>
+  <hr>
+  <MyCounter :value="10" />
 </template>
 
-
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
-
-
-const counter = ref(0);
-const counterSquare = computed(() => counter.value ** 2);
-const increment = () => {
-  counter.value++;
-};
-const decrement = () => {
-  if (counter.value === 0) return;
-  counter.value--;
-}
-
-const reset = () => counter.value = 0;
-
+import MyCounter from './components/MyCounter.vue';
 
 
 </script>
-
-
-<style scoped>
-h1 {
-  color: green;
-}
-</style>
