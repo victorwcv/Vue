@@ -6,7 +6,7 @@
     </div>
 
     <!-- Chat messages -->
-    <ChatMessages />
+    <ChatMessages :messages="messages" />
 
     <!-- Chat input -->
     <MessageBox />
@@ -18,4 +18,25 @@
 <script setup lang="ts">
 import ChatMessages from '@/components/chat/ChatMessages.vue';
 import MessageBox from '@/components/chat/MessageBox.vue';
+import type { ChatMessage } from '@/types/chat-message.interface';
+import { ref } from 'vue';
+
+const messages = ref<ChatMessage[]>([
+  {
+    id: crypto.randomUUID(),
+    message: 'Hi, how are you?',
+    itsMine: true
+  },
+  {
+    id: crypto.randomUUID(),
+    message: 'Good, how about you?',
+    itsMine: false
+  },
+  {
+    id: crypto.randomUUID(),
+    message: 'I am fine, what about you?',
+    itsMine: true
+  }
+]);
+
 </script>
