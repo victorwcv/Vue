@@ -18,34 +18,7 @@
 <script setup lang="ts">
 import ChatMessages from '@/components/chat/ChatMessages.vue';
 import MessageBox from '@/components/chat/MessageBox.vue';
-import type { ChatMessage } from '@/types/chat-message.interface';
-import { ref } from 'vue';
+import { useChat } from '@/composables/useChat';
 
-const messages = ref<ChatMessage[]>([
-  {
-    id: crypto.randomUUID(),
-    message: 'Hi, how are you?',
-    itsMine: true
-  },
-  {
-    id: crypto.randomUUID(),
-    message: 'Good, how about you?',
-    itsMine: false
-  },
-  {
-    id: crypto.randomUUID(),
-    message: 'I am fine, what about you?',
-    itsMine: true
-  }
-]);
-
-// TODO:  Define the emit function with the type of the emitted event.
-const onMessage = (text: string) => {
-  messages.value.push({
-    id: crypto.randomUUID(),
-    message: text,
-    itsMine: true
-  })
-}
-
+const { messages, onMessage } = useChat();
 </script>
