@@ -9,7 +9,7 @@
     <ChatMessages :messages="messages" />
 
     <!-- Chat input -->
-    <MessageBox />
+    <MessageBox @send-message="onMessage" />
 
   </div>
 </template>
@@ -38,5 +38,14 @@ const messages = ref<ChatMessage[]>([
     itsMine: true
   }
 ]);
+
+// TODO:  Define the emit function with the type of the emitted event.
+const onMessage = (text: string) => {
+  messages.value.push({
+    id: crypto.randomUUID(),
+    message: text,
+    itsMine: true
+  })
+}
 
 </script>
