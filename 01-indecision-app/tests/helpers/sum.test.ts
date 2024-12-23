@@ -1,4 +1,3 @@
-import { expect, it } from 'vitest';
 import { sum, addArray } from '../../src/helpers/sum';
 
 it('should return the sum of two numbers', () => {
@@ -26,7 +25,7 @@ it('should return the sum of the array', () => {
 
 it('should return 0', () => {
   // Arrange
-  const arr = [];
+  const arr: number[] = [];
 
   // Act
   const result = addArray(arr);
