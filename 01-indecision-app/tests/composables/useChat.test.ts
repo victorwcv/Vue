@@ -47,4 +47,28 @@ describe('useChat tests', () => {
       itsMine: true,
     });
   });
+
+  it('mock response - fetch api', async () => {
+    const mockResponse = { answer: 'yes', image: 'example.gif' };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).fetch = vi.fn(async () => ({
+      json: async () => mockResponse,
+    }));
+
+    const text = '¿Quieres café?';
+    const { messages, onMessage } = useChat();
+
+    await onMessage(text);
+    await new Promise((r) => setTimeout(r, 1600));
+
+    const [, herMessage] = messages.value;
+
+    expect(herMessage).toEqual({
+      id: expect.any(String),
+      image: mockResponse.image,
+      message: mockResponse.answer,
+      itsMine: false,
+    });
+  });
 });
