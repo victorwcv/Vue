@@ -1,21 +1,49 @@
-import { onMounted, ref } from 'vue';
-import { GameStatus, type PokemonListResponse } from '../interfaces';
+import { computed, onMounted, ref } from 'vue';
+import { GameStatus, type Pokemon, type PokemonListResponse } from '../interfaces';
 import { pokemonApi } from '../api/pokemonApi';
 
 export const usePokemonGame = () => {
   const gameStatus = ref<GameStatus>(GameStatus.Playing);
+  const pokemons = ref<Pokemon[]>([]);
+  const pokemonsOptions = ref<Pokemon[]>([]);
+
+  const isLoading = computed(() => pokemons.value.length === 0);
 
   const getPokemons = async () => {
     const response = await pokemonApi.get<PokemonListResponse>('/?limit=151');
 
-    console.log(response.data);
+    const pokemonsMap: Pokemon[] = response.data.results.map((pokemon) => {
+      const urlParts = pokemon.url.split('/');
+      const pokemonID = urlParts[urlParts.length - 2];
+
+      return {
+        id: pokemonID,
+        name: pokemon.name,
+      };
+    });
+
+    return pokemonsMap.sort(() => Math.random() - 0.5);
   };
 
-  onMounted(() => {
-    getPokemons();
+  const getNextOptions = (howMany: number = 4) => {
+    gameStatus.value = GameStatus.Playing;
+    pokemonsOptions.value = pokemons.value.slice(0, howMany);
+    pokemons.value = pokemons.value.slice(howMany);
+  };
+
+  onMounted(async () => {
+    await new Promise((r) => setTimeout(r, 1500));
+    pokemons.value = await getPokemons();
+    getNextOptions();
+    console.log(pokemonsOptions.value);
   });
 
   return {
     gameStatus,
+    isLoading,
+    pokemonsOptions,
+
+    // methods
+    getNextOptions,
   };
 };
