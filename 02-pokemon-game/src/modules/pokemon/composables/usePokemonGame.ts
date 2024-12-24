@@ -8,6 +8,10 @@ export const usePokemonGame = () => {
   const pokemonsOptions = ref<Pokemon[]>([]);
 
   const isLoading = computed(() => pokemons.value.length === 0);
+  const randomPokemon = computed(() => {
+    const randomIndex = Math.floor(Math.random() * pokemonsOptions.value.length);
+    return pokemonsOptions.value[randomIndex];
+  });
 
   const getPokemons = async () => {
     const response = await pokemonApi.get<PokemonListResponse>('/?limit=151');
@@ -42,6 +46,7 @@ export const usePokemonGame = () => {
     gameStatus,
     isLoading,
     pokemonsOptions,
+    randomPokemon,
 
     // methods
     getNextOptions,

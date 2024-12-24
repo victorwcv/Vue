@@ -10,6 +10,7 @@
     >
       ¿Quién es este Pokemon?
     </h1>
+    <p>{{ randomPokemon }}</p>
 
     <!-- Pokemon Picture -->
     <PokemonPicture />
@@ -24,7 +25,7 @@ import PokemonOptions from '../components/PokemonOptions.vue';
 import PokemonPicture from '../components/PokemonPicture.vue';
 import { usePokemonGame } from '../composables/usePokemonGame';
 
-const { isLoading } = usePokemonGame();
+const { isLoading, randomPokemon } = usePokemonGame();
 </script>
 
 <style scoped>
