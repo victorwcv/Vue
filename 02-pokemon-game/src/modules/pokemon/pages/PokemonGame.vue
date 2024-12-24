@@ -1,5 +1,8 @@
 <template>
-  <section v-if="isLoading" class="flex flex-col justify-center items-center w-screen h-screen">
+  <section
+    v-if="isLoading || randomPokemon.id === null"
+    class="flex flex-col justify-center items-center w-screen h-screen"
+  >
     <h1 class="text-3xl text-gray-600 font-semibold">-Espere por favor-</h1>
     <h3 class="animate-pulse text-gray-500 mt-2">Cargando Pokemons...</h3>
   </section>
@@ -10,13 +13,17 @@
     >
       ¿Quién es este Pokemon?
     </h1>
-    <p>{{ randomPokemon }}</p>
+
+    <h2>{{ gameStatus }}</h2>
 
     <!-- Pokemon Picture -->
-    <PokemonPicture />
+    <PokemonPicture
+      :pokemon-id="randomPokemon.id"
+      :show-pokemon="gameStatus !== GameStatus.Playing"
+    />
 
     <!-- Pokemon Options -->
-    <PokemonOptions />
+    <PokemonOptions :options="options" @selected-option="onSelectedOptions($event)" />
   </section>
 </template>
 
@@ -24,8 +31,19 @@
 import PokemonOptions from '../components/PokemonOptions.vue';
 import PokemonPicture from '../components/PokemonPicture.vue';
 import { usePokemonGame } from '../composables/usePokemonGame';
+import { GameStatus } from '../interfaces';
 
-const { isLoading, randomPokemon } = usePokemonGame();
+const {
+  isLoading,
+  randomPokemon,
+  gameStatus,
+  pokemonsOptions: options,
+  checkAnswer,
+} = usePokemonGame();
+
+const onSelectedOptions = (value: string) => {
+  checkAnswer(value);
+};
 </script>
 
 <style scoped>
