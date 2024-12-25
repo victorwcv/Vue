@@ -30,7 +30,7 @@ export const usePokemonGame = () => {
     return pokemonsMap.sort(() => Math.random() - 0.5);
   };
 
-  const getNextOptions = (howMany: number = 4) => {
+  const getNextRound = (howMany: number = 4) => {
     gameStatus.value = GameStatus.Playing;
     pokemonsOptions.value = pokemons.value.slice(0, howMany);
     pokemons.value = pokemons.value.slice(howMany);
@@ -43,7 +43,7 @@ export const usePokemonGame = () => {
       gameStatus.value = GameStatus.Won;
       confetti({
         particleCount: 300,
-        spread: 150,
+        spread: 100,
         origin: { x: 0.5, y: 0.5 },
       });
       return;
@@ -54,7 +54,7 @@ export const usePokemonGame = () => {
   onMounted(async () => {
     // await new Promise((r) => setTimeout(r, 1500));
     pokemons.value = await getPokemons();
-    getNextOptions();
+    getNextRound();
     console.log(pokemonsOptions.value);
   });
 
@@ -65,7 +65,7 @@ export const usePokemonGame = () => {
     randomPokemon,
 
     // methods
-    getNextOptions,
+    getNextRound,
     checkAnswer,
   };
 };

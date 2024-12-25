@@ -13,8 +13,13 @@
     >
       ¿Quién es este Pokemon?
     </h1>
-
-    <h2>{{ gameStatus }}</h2>
+    <button
+      v-if="gameStatus !== GameStatus.Playing"
+      class="text-xl rounded-md bg bg-yellow-400 px-4 py-2 mt-8"
+      @click="getNextRound()"
+    >
+      Jugar de nuevo
+    </button>
 
     <!-- Pokemon Picture -->
     <PokemonPicture
@@ -23,7 +28,12 @@
     />
 
     <!-- Pokemon Options -->
-    <PokemonOptions :options="options" @selected-option="onSelectedOptions($event)" />
+    <PokemonOptions
+      :options="options"
+      @selected-option="onSelectedOptions($event)"
+      :block-selection="gameStatus !== GameStatus.Playing"
+      :correct-answer="randomPokemon.id"
+    />
   </section>
 </template>
 
@@ -39,6 +49,7 @@ const {
   gameStatus,
   pokemonsOptions: options,
   checkAnswer,
+  getNextRound,
 } = usePokemonGame();
 
 const onSelectedOptions = (value: string) => {
