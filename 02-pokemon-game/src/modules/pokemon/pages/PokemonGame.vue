@@ -15,7 +15,7 @@
     </h1>
     <button
       v-if="gameStatus !== GameStatus.Playing"
-      class="text-xl rounded-md bg bg-yellow-400 px-4 py-2 mt-8"
+      class="text-xl rounded-md bg bg-yellow-400 px-10 py-5 m-auto z-40 active:scale-95"
       @click="getNextRound()"
     >
       Jugar de nuevo
@@ -59,8 +59,10 @@ const onSelectedOptions = (value: string) => {
 
 <style scoped>
 .game {
-  height: 960px;
+  position: relative;
   width: 500px;
+  height: 100vh;
+  min-height: 880px;
   background-image: url('/pokemon-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;

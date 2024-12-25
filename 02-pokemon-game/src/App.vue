@@ -3,9 +3,16 @@ import PokemonGame from './modules/pokemon/pages/PokemonGame.vue';
 </script>
 
 <template>
-  <main class="relative">
+  <main class="App">
     <PokemonGame />
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.App {
+  background-color: rgb(237, 50, 62);
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+}
+</style>

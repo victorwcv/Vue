@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute left-10 top-96">
+  <div class="absolute top-[35%] left-[5%]">
     <img
       v-if="!showPokemon"
       :src="pokemonImage"
