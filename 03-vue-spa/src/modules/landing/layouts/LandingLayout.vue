@@ -20,6 +20,10 @@
         <RouterLink to="/features"> Features </RouterLink>
         <RouterLink to="/pricing"> Pricing </RouterLink>
         <RouterLink to="/contact"> Contact </RouterLink>
+        <RouterLink to="/pokemon/1"> Pokemons </RouterLink>
+        <RouterLink to="/auth" class="bg-red-500 text-white px-4 py-1 rounded-full"
+          >Log out</RouterLink
+        >
       </nav>
     </header>
     <!-- Fin Header -->

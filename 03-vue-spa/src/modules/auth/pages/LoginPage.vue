@@ -39,12 +39,12 @@
       </div>
 
       <!-- Login Button -->
-      <button
-        type="submit"
-        class="bg-victor-500 hover:bg-victor-600 text-white font-semibold rounded-md py-2 px-4 w-full"
+      <RouterLink
+        to="/"
+        class="block text-center bg-victor-500 hover:bg-victor-600 text-white font-semibold rounded-md py-2 px-4 w-full"
       >
         Login
-      </button>
+      </RouterLink>
     </form>
 
     <!-- Sign up  Link -->
