@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/modules/landing/pages/HomePage.vue';
 import NotFound404 from '@/modules/common/pages/NotFound404.vue';
+import isAuthenticated from '@/modules/auth/guards/authGard';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +35,7 @@ const router = createRouter({
         {
           path: '/pokemon/:id',
           name: 'pokemon',
+          beforeEnter: [isAuthenticated],
           props: (route) => {
             const id = +route.params.id;
             return isNaN(id) ? { id: 1 } : { id };
@@ -46,6 +48,7 @@ const router = createRouter({
     // Auth
     {
       path: '/auth',
+      name: 'auth',
       redirect: '/auth/login',
       component: () => import('@/modules/auth/layouts/AuthLayout.vue'),
       children: [

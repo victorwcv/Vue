@@ -39,12 +39,13 @@
       </div>
 
       <!-- Login Button -->
-      <RouterLink
-        to="/"
+      <button
+        @click="onLogin"
+        type="button"
         class="block text-center bg-victor-500 hover:bg-victor-600 text-white font-semibold rounded-md py-2 px-4 w-full"
       >
         Login
-      </RouterLink>
+      </button>
     </form>
 
     <!-- Sign up  Link -->
@@ -53,3 +54,18 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const onLogin = () => {
+  localStorage.setItem('userID', 'ABC-123');
+
+  const lastPath = localStorage.getItem('lastPath') ?? '/';
+
+  router.replace(lastPath);
+  console.log('click login');
+};
+</script>

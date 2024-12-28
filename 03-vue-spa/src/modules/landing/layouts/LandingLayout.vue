@@ -4,24 +4,19 @@
     <header
       class="flex items-center h-14 px-4 border-b border-gray-300 sm:h-16 md:px-6 lg:px-8"
     >
-      <div>
-        <a class="flex items-center gap-2 font-semibold" href="#">
-          <img
-            alt="Vue logo"
-            class="logo"
-            src="@/assets/logo.png"
-            width="40"
-            height="40"
-          />
-        </a>
-      </div>
+      <a class="font-semibold" href="#">
+        <img alt="Victor logo" class="w-10 h-10 object-contain" src="@/assets/logo.png" />
+      </a>
+
       <nav class="ml-auto space-x-4 flex items-center h-10 sm:space-x-6">
         <RouterLink to="/"> Home </RouterLink>
         <RouterLink to="/features"> Features </RouterLink>
         <RouterLink to="/pricing"> Pricing </RouterLink>
         <RouterLink to="/contact"> Contact </RouterLink>
         <RouterLink to="/pokemon/1"> Pokemons </RouterLink>
-        <RouterLink to="/auth" class="bg-red-500 text-white px-4 py-1 rounded-full"
+        <RouterLink
+          to="/auth"
+          class="bg-red-500 text-white px-4 py-1 rounded-full text-ellipsis text-nowrap"
           >Log out</RouterLink
         >
       </nav>
