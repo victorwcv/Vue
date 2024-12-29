@@ -9,6 +9,6 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script src="./HomePage.ts" lang="ts"></script>
 
 <style scoped></style>
