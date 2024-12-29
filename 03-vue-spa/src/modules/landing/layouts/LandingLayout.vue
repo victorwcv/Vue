@@ -9,11 +9,36 @@
       </a>
 
       <nav class="ml-auto space-x-4 flex items-center h-10 sm:space-x-6">
-        <RouterLink to="/"> Home </RouterLink>
-        <RouterLink to="/features"> Features </RouterLink>
-        <RouterLink to="/pricing"> Pricing </RouterLink>
-        <RouterLink to="/contact"> Contact </RouterLink>
-        <RouterLink to="/pokemon/1"> Pokemons </RouterLink>
+        <RouterLink
+          to="/"
+          exact-active-class="text-victor-500 underline underline-offset-4"
+        >
+          Home
+        </RouterLink>
+        <RouterLink
+          to="/features"
+          active-class="text-victor-500 underline underline-offset-4 "
+        >
+          Features
+        </RouterLink>
+        <RouterLink
+          to="/pricing"
+          active-class="text-victor-500 underline underline-offset-4"
+        >
+          Pricing
+        </RouterLink>
+        <RouterLink
+          to="/contact"
+          active-class="text-victor-500 underline underline-offset-4"
+        >
+          Contact
+        </RouterLink>
+        <RouterLink
+          to="/pokemon/1"
+          active-class="text-victor-500 underline underline-offset-4"
+        >
+          Pokemons
+        </RouterLink>
         <RouterLink
           to="/auth"
           class="bg-red-500 text-white px-4 py-1 rounded-full text-ellipsis text-nowrap"
