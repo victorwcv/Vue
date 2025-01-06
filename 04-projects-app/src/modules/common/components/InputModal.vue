@@ -61,7 +61,6 @@ const submitValue = () => {
 
     return;
   }
-  console.log(inputValue.value);
   emits('value', inputValue.value.trim());
   emits('close');
 

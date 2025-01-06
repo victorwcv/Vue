@@ -3,7 +3,6 @@ import { computed, ref } from 'vue';
 import type { Project } from '../types/project.interface';
 import { useLocalStorage } from '@vueuse/core';
 
-
 export const useProjectsStore = defineStore('projects', () => {
   const projects = ref(useLocalStorage<Project[]>('projects', []));
 
@@ -22,6 +21,7 @@ export const useProjectsStore = defineStore('projects', () => {
 
     // getters
     projectList: computed(() => [...projects.value]),
+    noProjects: computed(() => projects.value.length === 0),
 
     // actions
     addProject,
