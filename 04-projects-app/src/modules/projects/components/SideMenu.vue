@@ -9,7 +9,7 @@
         <template v-if="project.tasks.length > 0">
           <details>
             <summary>
-              <RouterLink :to="`/project/${project.id}`">
+              <RouterLink :to="`/projects/${project.id}`">
                 {{ project.name }}
               </RouterLink>
             </summary>
@@ -22,7 +22,7 @@
         </template>
 
         <template v-else>
-          <RouterLink :to="`/project/${project.id}`">
+          <RouterLink :to="`/projects/${project.id}`">
             {{ project.name }}
           </RouterLink>
         </template>
@@ -32,14 +32,9 @@
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue';
 import { useProjectsStore } from '../store/projects.store';
 
 const projectsStore = useProjectsStore();
-
-watch(projectsStore, () => {
-  console.log(projectsStore.projectList);
-});
 </script>
 
 <style scoped></style>
