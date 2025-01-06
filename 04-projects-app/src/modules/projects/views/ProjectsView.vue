@@ -12,11 +12,13 @@
       </thead>
       <tbody>
         <!-- row 1 -->
-        <tr class="hover">
-          <th>1</th>
-          <td>Cy Ganderton</td>
-          <td>Quality Control Specialist</td>
-          <td>Blue</td>
+        <tr v-for="(project, index) in projectsStore.projectList" :key="project.id" class="hover">
+          <th>{{ index + 1 }}</th>
+          <td>{{ project.name }}</td>
+          <td>{{ project.tasks.length }}</td>
+          <td>
+            <progress class="progress progress-primary w-56" value="10" max="100"></progress>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -25,7 +27,7 @@
   <InputModal
     :open="modalOpen"
     @close="modalOpen = false"
-    @value="onNewValue"
+    @value="projectsStore.addProject"
     title="Nuevo Proyecto"
     subtitle="Ingrese el nombre de su nuevo proyecto
     "
@@ -65,10 +67,6 @@ const modalOpen = ref(false);
 const CustomModalOpen = ref(false);
 
 const projectsStore = useProjectsStore();
-
-const onNewValue = (projectName: string) => {
-  console.log({ projectName });
-};
 </script>
 
 <style scoped></style>

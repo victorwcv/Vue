@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import type { Project } from '../types/project.interface';
 
 const initialState: Project[] = [
   {
-    id: 1,
+    id: "1",
     name: 'Project 1',
     tasks: [
       { id: 1, name: 'Task 1', completedAt: null },
@@ -12,7 +12,7 @@ const initialState: Project[] = [
     ],
   },
   {
-    id: 2,
+    id: "2",
     name: 'Project 2',
     tasks: [
       { id: 3, name: 'Task 3', completedAt: null },
@@ -24,7 +24,23 @@ const initialState: Project[] = [
 export const useProjectsStore = defineStore('projects', () => {
   const projects = ref<Project[]>([...initialState]);
 
+  const addProject = (name: string) => {
+    if (name.trim() === '') return;
+
+    projects.value.push({
+      id: crypto.randomUUID(),
+      name,
+      tasks: [],
+    });
+  };
+
   return {
-    projects,
+    // properties
+
+    // getters
+    projectList: computed(() => [...projects.value]),
+
+    // actions
+    addProject,
   };
 });
