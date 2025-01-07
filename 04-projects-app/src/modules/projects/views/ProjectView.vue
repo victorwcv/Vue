@@ -22,7 +22,7 @@
                 <input
                   type="checkbox"
                   :checked="!!task.completedAt"
-                  class="checkbox checkbox-primary"
+                  class="block checkbox checkbox-primary mx-auto"
                   @change="projectsStore.toggleTask(project!.id, task.id)"
                 />
               </th>

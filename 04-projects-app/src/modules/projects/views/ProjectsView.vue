@@ -5,19 +5,28 @@
       <thead>
         <tr>
           <th></th>
-          <th>Proyectos</th>
-          <th>Tareas</th>
-          <th>Avances</th>
+          <th>Nombre de Proyecto</th>
+          <th>Tareas Totales</th>
+          <th>% de Avance</th>
         </tr>
       </thead>
       <tbody>
         <!-- row 1 -->
-        <tr v-for="(project, index) in projectsStore.projectList" :key="project.id" class="hover">
+        <tr
+          v-for="(project, index) in projectsStore.projectsWithCompletion"
+          :key="project.id"
+          class="hover"
+        >
           <th>{{ index + 1 }}</th>
           <td>{{ project.name }}</td>
           <td>{{ project.tasks.length }}</td>
           <td>
-            <progress class="progress progress-primary w-56" value="10" max="100"></progress>
+            <progress
+              class="progress progress-primary w-56"
+              :value="project.completion"
+              max="100"
+            ></progress>
+            {{ project.completion }} %
           </td>
         </tr>
       </tbody>
