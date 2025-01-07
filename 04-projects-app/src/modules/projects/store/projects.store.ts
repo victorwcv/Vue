@@ -16,6 +16,30 @@ export const useProjectsStore = defineStore('projects', () => {
     });
   };
 
+  const addTask = (name: string, projectId: string) => {
+    if (name.trim() === '' || !projectId) return;
+
+    const project = projects.value.find((p) => p.id === projectId);
+
+    if (!project) return;
+    project.tasks.push({
+      id: crypto.randomUUID(),
+      name,
+      completedAt: null,
+    });
+  };
+
+  const toggleTask = (projectId: string, taskId: string) => {
+    const project = projects.value.find((p) => p.id === projectId);
+
+    if (!project) return;
+    const task = project.tasks.find((t) => t.id === taskId);
+
+    if (!task) return;
+    const date = new Date();
+    task.completedAt = task.completedAt ? null : date;
+  };
+
   return {
     // properties
 
@@ -25,5 +49,7 @@ export const useProjectsStore = defineStore('projects', () => {
 
     // actions
     addProject,
+    addTask,
+    toggleTask,
   };
 });

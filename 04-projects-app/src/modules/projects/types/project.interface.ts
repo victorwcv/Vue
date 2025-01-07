@@ -5,7 +5,7 @@ export interface Project {
 }
 
 export interface Task {
-  id: number;
+  id: string;
   name: string;
   completedAt: Date | null;
 }
