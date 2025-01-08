@@ -8,6 +8,13 @@ const router = createRouter({
       path: '/',
       name: 'shop',
       component: ShopLayout,
+      children: [
+        {
+          path: '',
+          name: 'home',
+          component: import('@/modules/shop/views/HomeView.vue'),
+        },
+      ],
     },
   ],
 });
