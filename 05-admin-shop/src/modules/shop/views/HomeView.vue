@@ -1,13 +1,12 @@
 <template>
-
   <!-- Title -->
-  <div class="pt-32  bg-white">
+  <div class="pt-32 bg-white">
     <h1 class="text-center text-2xl font-bold text-gray-800">All Products</h1>
   </div>
 
   <!-- Tab Menu -->
   <div
-    class="flex flex-wrap items-center  overflow-x-auto overflow-y-hidden py-10 justify-center   bg-white text-gray-800">
+    class="flex flex-wrap items-center overflow-x-auto overflow-y-hidden py-10 justify-center bg-white text-gray-800">
     <a rel="noopener noreferrer" href="#" class="flex items-center flex-shrink-0 px-5 py-3 space-x-2text-gray-600">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
@@ -24,7 +23,7 @@
       </svg>
       <span>Corrupti</span>
     </a>
-    <a rel="noopener noreferrer" href="#" class="flex items-center flex-shrink-0 px-5 py-3 space-x-2  text-gray-600">
+    <a rel="noopener noreferrer" href="#" class="flex items-center flex-shrink-0 px-5 py-3 space-x-2 text-gray-600">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
         <polygon
@@ -33,7 +32,7 @@
       </svg>
       <span>Excepturi</span>
     </a>
-    <a rel="noopener noreferrer" href="#" class="flex items-center flex-shrink-0 px-5 py-3 space-x-2  text-gray-600">
+    <a rel="noopener noreferrer" href="#" class="flex items-center flex-shrink-0 px-5 py-3 space-x-2 text-gray-600">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
         <circle cx="12" cy="12" r="10"></circle>
@@ -45,8 +44,8 @@
 
   <!-- Product List -->
   <section class="py-10 bg-gray-100">
-    <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
         <a href="#">
           <div class="relative flex items-end overflow-hidden rounded-xl">
             <img
@@ -85,7 +84,7 @@
           </div>
         </a>
       </article>
-      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
         <a href="#">
           <div class="relative flex items-end overflow-hidden rounded-xl">
             <img
@@ -108,7 +107,6 @@
             <div class="mt-3 flex items-end justify-between">
               <p class="text-lg font-bold text-blue-500">$850</p>
 
-
               <div
                 class="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -124,7 +122,7 @@
         </a>
       </article>
 
-      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
         <a href="#">
           <div class="relative flex items-end overflow-hidden rounded-xl">
             <img
@@ -163,7 +161,7 @@
         </a>
       </article>
 
-      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
         <a href="#">
           <div class="relative flex items-end overflow-hidden rounded-xl">
             <img
@@ -201,7 +199,7 @@
           </div>
         </a>
       </article>
-      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
         <a href="#">
           <div class="relative flex items-end overflow-hidden rounded-xl">
             <img
@@ -239,7 +237,7 @@
           </div>
         </a>
       </article>
-      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
         <a href="#">
           <div class="relative flex items-end overflow-hidden rounded-xl">
             <img
@@ -278,7 +276,7 @@
           </div>
         </a>
       </article>
-      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
         <a href="#">
           <div class="relative flex items-end overflow-hidden rounded-xl">
             <img
@@ -317,7 +315,7 @@
           </div>
         </a>
       </article>
-      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+      <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
         <a href="#">
           <div class="relative flex items-end overflow-hidden rounded-xl">
             <img
@@ -358,5 +356,11 @@
       </article>
     </div>
   </section>
-
 </template>
+
+<script lang="ts" setup>
+import { getProductsAction } from '@/modules/products/actions';
+
+getProductsAction();
+
+</script>

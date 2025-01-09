@@ -12,7 +12,7 @@ const router = createRouter({
         {
           path: '',
           name: 'home',
-          component: import('@/modules/shop/views/HomeView.vue'),
+          component: () => import('@/modules/shop/views/HomeView.vue'),
         },
       ],
     },
