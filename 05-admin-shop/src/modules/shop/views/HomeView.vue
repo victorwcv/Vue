@@ -45,12 +45,16 @@
   <!-- Product List -->
   <ProductsList :products="products" />
 
+  <!-- Pagination -->
+  <ButtonPagination />
+
 </template>
 
 <script lang="ts" setup>
 import { getProductsAction } from '@/modules/products/actions';
 import { useQuery } from '@tanstack/vue-query';
 import ProductsList from '../../products/components/ProductsList.vue';
+import ButtonPagination from '@/modules/common/components/ButtonPagination.vue';
 
 const { data: products } = useQuery({
   queryKey: ['products', { page: 1 }],

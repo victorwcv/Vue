@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import IconCart from '@/modules/products/icons/IconCart.vue';
+import IconCart from '@/icons/IconCart.vue';
 import type { Product } from '@/modules/products/types/product.interface';
 
 interface Props {
