@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import { AuthStatus, type User } from '@/modules/auth/types';
 import { loginAction } from '../actions';
 
-export const useCounterStore = defineStore('counter', () => {
+export const useAuthStore = defineStore('auth', () => {
   const authStatus = ref<AuthStatus>(AuthStatus.checking);
   const user = ref<User | null>(null);
   const token = ref<string | null>(null);
@@ -13,13 +13,17 @@ export const useCounterStore = defineStore('counter', () => {
       const loginResp = await loginAction(email, password);
 
       if (!loginResp.ok) {
+        logout();
         return false;
       }
 
       user.value = loginResp.user;
       token.value = loginResp.token;
       authStatus.value = AuthStatus.authenticated;
+
+      return true;
     } catch (error) {
+      console.log(error);
       return logout();
     }
   };
@@ -39,7 +43,6 @@ export const useCounterStore = defineStore('counter', () => {
     // Getters
     isChecking: computed(() => authStatus.value === AuthStatus.checking),
     isAuthenticated: computed(() => authStatus.value === AuthStatus.authenticated),
-    isNotAuthenticated: computed(() => authStatus.value === AuthStatus.notAuthenticated),
 
     // TODO: getter para saber si es Admin o no
 
