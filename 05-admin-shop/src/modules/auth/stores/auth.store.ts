@@ -66,6 +66,8 @@ export const useAuthStore = defineStore('auth', () => {
   };
 
   const logout = () => {
+    localStorage.removeItem('token');
+
     authStatus.value = AuthStatus.notAuthenticated;
     token.value = null;
     user.value = null;
@@ -81,7 +83,7 @@ export const useAuthStore = defineStore('auth', () => {
     isChecking: computed(() => authStatus.value === AuthStatus.checking),
     isAuthenticated: computed(() => authStatus.value === AuthStatus.authenticated),
 
-    // TODO: getter para saber si es Admin o no
+    isAdmin: computed(() => user.value?.roles.includes('admin') || false),
 
     username: computed(() => user.value?.fullName),
 

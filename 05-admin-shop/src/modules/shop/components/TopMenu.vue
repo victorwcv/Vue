@@ -21,16 +21,34 @@
       </a>
       <div class="mt-2 sm:mt-0 sm:flex md:order-2">
         <!-- Login Button -->
-        <RouterLink
-          :to="{ name: 'login' }"
-          class="rounde mr-3 hidden border border-blue-700 py-1.5 px-6 text-center text-sm font-medium text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 md:inline-block rounded-lg"
-          >Login</RouterLink
-        >
-        <RouterLink
-          :to="{ name: 'register' }"
-          class="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg"
-          >Register</RouterLink
-        >
+        <template v-if="!authStore.isAuthenticated">
+          <RouterLink
+            :to="{ name: 'login' }"
+            class="rounded mr-3 hidden border border-blue-700 py-1.5 px-6 text-center text-sm font-medium text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 md:inline-block"
+            >Login</RouterLink
+          >
+          <RouterLink
+            :to="{ name: 'register' }"
+            class="rounded mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block"
+            >Register</RouterLink
+          >
+        </template>
+
+        <template v-if="authStore.isAuthenticated">
+          <RouterLink
+            v-if="authStore.isAdmin"
+            to="/admin"
+            class="rounded mr-3 hidden border border-blue-700 py-1.5 px-6 text-center text-sm font-medium text-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 md:inline-block"
+            >Admin</RouterLink
+          >
+          <button
+            @click="authStore.logout"
+            class="rounded mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block"
+          >
+            Logout
+          </button>
+        </template>
+
         <!-- Register Button -->
         <button
           data-collapse-toggle="navbar-sticky"
@@ -98,5 +116,7 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+import { useAuthStore } from '@/modules/auth/stores/auth.store';
+
+const authStore = useAuthStore();
 </script>
