@@ -11,7 +11,7 @@ const isNotAuthenticated = async (
 
   await authStore.checkAuthStatus();
 
-  if (authStore.authStatus === AuthStatus.notAuthenticated) {
+  if (authStore.authStatus === AuthStatus.authenticated) {
     next({
       name: 'home',
     });
