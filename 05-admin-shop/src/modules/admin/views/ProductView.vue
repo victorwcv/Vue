@@ -9,7 +9,7 @@
       <!-- Primera parte del formulario -->
       <div class="mb-4">
         <label for="title" class="form-label">Título</label>
-        <input type="text" id="title" class="form-control" />
+        <input v-model="title" v-bind="titleAttrs" type="text" id="title" class="form-control" />
       </div>
 
       <div class="mb-4">
@@ -93,6 +93,15 @@
       </div>
     </div>
   </form>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2">
+    <div class="bg-blue-200 p-4">
+      {{ values }}
+    </div>
+    <div class="bg-red-200 p-4">
+      {{ errors }}
+    </div>
+  </div>
 </template>
 
 <script lang="ts" src="./ProductView.ts"></script>
