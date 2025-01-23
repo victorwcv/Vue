@@ -34,6 +34,7 @@ export default defineComponent({
       data: product,
       isLoading,
       isError,
+      refetch,
     } = useQuery({
       queryKey: ['product', props.productId],
       queryFn: () => getProductById(props.productId),
@@ -102,11 +103,19 @@ export default defineComponent({
       toast.success('Product updated successfully');
 
       // TODO: Redirect to the product page
+      router.replace(`/admin/products/${updatedProduct.value!.id}`);
 
       resetForm({
         values: updatedProduct.value,
       });
     });
+
+    watch(
+      () => props.productId,
+      () => {
+        refetch();
+      },
+    );
 
     const allSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 

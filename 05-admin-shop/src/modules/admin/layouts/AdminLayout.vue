@@ -198,9 +198,9 @@
         >
           <span class="leading-none">Item 6</span>
         </a>
-        <a
+        <RouterLink
           class="flex items-center flex-shrink-0 h-10 px-3 mt-auto text-sm font-medium bg-blue-500 rounded hover:bg-blue-700 text-white"
-          href="#"
+          to="/admin/products/create"
         >
           <svg
             class="w-5 h-5"
@@ -217,7 +217,7 @@
             />
           </svg>
           <span class="ml-2 leading-none">New Product</span>
-        </a>
+        </RouterLink>
       </div>
     </div>
     <div class="flex flex-col flex-grow">
