@@ -1,6 +1,8 @@
 <template>
   <div class="bg-white px-5 py-2 rounded">
-    <h1 class="text-3xl">Producto: <small class="text-blue-500">nombre</small></h1>
+    <h1 class="text-3xl">
+      Producto: <small class="text-blue-500">{{ title }}</small>
+    </h1>
     <hr class="my-4" />
   </div>
 
@@ -9,15 +11,6 @@
       <!-- Primera parte del formulario -->
       <div class="mb-4">
         <label for="title" class="form-label">Título</label>
-        <!-- <input
-          v-model="title"
-          v-bind="titleAttrs"
-          type="text"
-          id="title"
-          class="form-control"
-          :class="['form-control', { 'border-red-500': errors.title }]"
-        />
-        <span v-if="errors.title" class="text-red-500 text-sm">{{ errors.title }}</span> -->
         <CustomInput v-model="title" v-bind="titleAttrs" :error="errors.title" />
       </div>
 
@@ -28,10 +21,6 @@
 
       <div class="mb-4">
         <label for="description" class="form-label">Descripción</label>
-        <!-- <textarea
-          id="description"
-          class="shadow h-32 appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        ></textarea> -->
 
         <CustomTextArea
           v-model="description"
@@ -59,7 +48,10 @@
             v-for="size in allSizes"
             :key="size"
             type="button"
-            class="flex-1 bg-blue-500 text-white p-2 rounded w-14 mr-2"
+            :class="[
+              'flex-1 text-white p-2 rounded w-14 mr-2',
+              { 'bg-blue-600': hasSize(size), 'bg-blue-300': !hasSize(size) },
+            ]"
             @click="toggleSize(size)"
           >
             {{ size }}
@@ -76,10 +68,6 @@
         <div v-for="image in images" :key="image.value" class="flex-shrink-0">
           <img :src="image.value" alt="imagen" class="w-[250px] h-[250px]" />
         </div>
-
-        <!-- <div class="flex-shrink-0">
-          <img src="https://via.placeholder.com/250" alt="imagen" class="w-[250px] h-[250px]" />
-        </div> -->
       </div>
       <!-- Upload image -->
       <div class="col-span-2 my-2">
@@ -117,6 +105,9 @@
     </pre>
     <pre class="bg-red-200 p-4">
       {{ JSON.stringify(errors, null, 2) }}
+    </pre>
+    <pre class="bg-green-200 p-4 col-span-2">
+      {{ JSON.stringify(meta, null, 2) }}
     </pre>
   </div>
 </template>
