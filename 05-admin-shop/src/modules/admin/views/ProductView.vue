@@ -112,12 +112,12 @@
   </form>
 
   <div class="grid grid-cols-1 sm:grid-cols-2">
-    <div class="bg-blue-200 p-4">
-      {{ values }}
-    </div>
-    <div class="bg-red-200 p-4">
-      {{ errors }}
-    </div>
+    <pre class="bg-blue-200 p-4">
+      {{ JSON.stringify(values, null, 2) }}
+    </pre>
+    <pre class="bg-red-200 p-4">
+      {{ JSON.stringify(errors, null, 2) }}
+    </pre>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 import { getProductById } from '@/modules/products/actions';
 import { useQuery } from '@tanstack/vue-query';
-import { defineComponent, watchEffect } from 'vue';
+import { defineComponent, watch, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import { useFieldArray, useForm } from 'vee-validate';
 import * as yup from 'yup';
@@ -38,7 +38,7 @@ export default defineComponent({
       retry: false,
     });
 
-    const { values, defineField, errors, handleSubmit } = useForm({
+    const { values, defineField, errors, handleSubmit, resetForm } = useForm({
       validationSchema,
     });
 
@@ -70,6 +70,21 @@ export default defineComponent({
         router.replace('/admin/products');
       }
     });
+
+    watch(
+      product,
+      () => {
+        if (!product) return;
+
+        resetForm({
+          values: product.value,
+        });
+      },
+      {
+        immediate: true,
+        deep: true,
+      },
+    );
 
     const allSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 
